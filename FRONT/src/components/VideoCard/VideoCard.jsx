@@ -194,11 +194,6 @@ export default function VideoCard({ Video }) {
           width="100%"
           height="100%"
           url={Video.url}
-          config={{
-            youtube: {
-              playerVars: { showinfo: 1 },
-            },
-          }}
           controls={true}
           className={`${styles.react_player}`}
         />

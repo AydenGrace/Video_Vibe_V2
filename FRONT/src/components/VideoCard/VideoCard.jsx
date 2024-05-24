@@ -187,6 +187,11 @@ export default function VideoCard({ Video }) {
     console.log(response);
   };
 
+  const handleError = (error) => {
+    console.error("Error playing media:", error);
+    // Handle the error, for example, by displaying a notification to the user
+  };
+
   return (
     <div className={`d-flex flex-column center card p-20 ${styles.element}`}>
       <div className={`${styles.player_wrapper}`}>
@@ -197,6 +202,7 @@ export default function VideoCard({ Video }) {
           controls={true}
           light={true}
           className={`${styles.react_player}`}
+          onError={handleError}
         />
       </div>
       <div className={`${styles.title_section}`}>

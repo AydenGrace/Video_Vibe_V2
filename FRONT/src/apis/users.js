@@ -1,4 +1,4 @@
-const BASE_URL = process.env.API_URL + "/api/users";
+const BASE_URL = "https://video-vibe-v2.vercel.app" + "/api/users";
 
 export async function signup(values) {
   try {

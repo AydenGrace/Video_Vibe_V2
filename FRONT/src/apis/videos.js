@@ -1,4 +1,4 @@
-const BASE_URL = process.env.API_URL + "/api/videos";
+const BASE_URL = "https://video-vibe-v2.vercel.app" + "/api/videos";
 
 export async function like(values) {
   try {

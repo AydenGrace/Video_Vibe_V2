@@ -27,13 +27,15 @@ export default function AddVideo() {
   const { allVideos, addNewVideo } = useContext(VideoContext);
 
   const schema = yup.object({
-    video: yup.mixed().required(),
+    video: yup.mixed(),
+    url_youtube: yup.string(),
     name: yup.string().required(),
   });
 
   const defaultValues = {
     video: null,
     name: "",
+    url_youtube: "",
   };
 
   const {
@@ -112,9 +114,10 @@ export default function AddVideo() {
       file: values.video[0],
     };
     try {
-      if (isTitleAlreadyExist(videoToUpload.title))
-        await uploadFile(videoToUpload);
-      else toast.error("Video already exist.");
+      if (isTitleAlreadyExist(videoToUpload.title)) {
+        if (!values.url_youtube) await uploadFile(videoToUpload);
+        else sendToBackEnd(videoToUpload, values.url_youtube);
+      } else toast.error("Video already exist.");
     } catch (e) {
       console.error(e);
     }
@@ -157,7 +160,7 @@ export default function AddVideo() {
           <div className={`${styles.modal_add}`}>
             <h2>Add a Video</h2>
             <form
-              className="d-flex center flex-column"
+              className="d-flex center flex-column t-center"
               onSubmit={handleSubmit(submit)}
             >
               <input
@@ -169,6 +172,17 @@ export default function AddVideo() {
                 onChange={(e) => setVideo(() => e.target.files[0])}
                 className="mb-10"
               />
+              <p>-- Or --</p>
+              <div className="d-flex flex-column">
+                <label htmlFor="url_youtube">Youtube URL</label>
+                <input
+                  {...register("url_youtube")}
+                  type="text"
+                  name="url"
+                  id="url_youtube"
+                  className="input-style mb-10"
+                />
+              </div>
               <div className="d-flex flex-column">
                 <label htmlFor="name">Title</label>
                 <input

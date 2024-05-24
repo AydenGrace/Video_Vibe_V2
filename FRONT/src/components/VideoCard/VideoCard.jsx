@@ -200,7 +200,6 @@ export default function VideoCard({ Video }) {
           height="100%"
           url={Video.url}
           controls={true}
-          light={true}
           className={`${styles.react_player}`}
           onError={handleError}
         />

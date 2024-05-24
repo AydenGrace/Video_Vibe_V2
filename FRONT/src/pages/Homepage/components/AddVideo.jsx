@@ -109,6 +109,11 @@ export default function AddVideo() {
   }
 
   async function submit(values) {
+    if (!values.video[0].length && !values.url_youtube) {
+      toast.error("Need a file or a URL.");
+      return;
+    }
+
     const videoToUpload = {
       title: values.name,
       file: values.video[0],
@@ -116,7 +121,7 @@ export default function AddVideo() {
     console.log(values);
     try {
       if (isTitleAlreadyExist(videoToUpload.title)) {
-        if (values.url_youtube === "") await uploadFile(videoToUpload);
+        if (values.video.length) await uploadFile(videoToUpload);
         else sendToBackEnd(videoToUpload, values.url_youtube);
       } else toast.error("Video already exist.");
     } catch (e) {

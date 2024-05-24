@@ -121,8 +121,13 @@ export default function AddVideo() {
     console.log(values);
     try {
       if (isTitleAlreadyExist(videoToUpload.title)) {
-        if (values.video.length) await uploadFile(videoToUpload);
-        else sendToBackEnd(videoToUpload, values.url_youtube);
+        if (values.video.length) {
+          console.log("Case : File to upload");
+          await uploadFile(videoToUpload);
+        } else {
+          console.log("Case : URL");
+          sendToBackEnd(videoToUpload, values.url_youtube);
+        }
       } else toast.error("Video already exist.");
     } catch (e) {
       console.error(e);

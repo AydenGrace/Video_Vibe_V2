@@ -109,7 +109,7 @@ export default function AddVideo() {
   }
 
   async function submit(values) {
-    if (!values.video[0].length && !values.url_youtube) {
+    if (!values.video.length && !values.url_youtube) {
       toast.error("Need a file or a URL.");
       return;
     }

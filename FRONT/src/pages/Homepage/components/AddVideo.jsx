@@ -109,6 +109,7 @@ export default function AddVideo() {
   }
 
   async function submit(values) {
+    console.log(values);
     if (!values.video.length && !values.url_youtube) {
       toast.error("Need a file or a URL.");
       return;
@@ -189,7 +190,7 @@ export default function AddVideo() {
                 <input
                   {...register("url_youtube")}
                   type="text"
-                  name="url"
+                  name="url_youtube"
                   id="url_youtube"
                   className="input-style mb-10"
                 />

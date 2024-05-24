@@ -5,14 +5,20 @@ const cors = require("cors");
 const port = process.env.PORT || 4000;
 const userRoutes = require("./routes/users");
 const videosRoutes = require("./routes/videos");
+const allowedOrigin = "";
 
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+app.use(cors());
+
+app.use((req, res, next) => {
+  // res.header("Access-Control-Allow-Origin", process.env.BASE_URL);
+  res.header("Access-Control-Allow-Origin", allowedOrigin);
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, PATCH");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  next();
+});
 
 app.use("/api/users", userRoutes);
 app.use("/api/videos", videosRoutes);

@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/api/videos";
+const BASE_URL = process.env.API_URL + "/api/videos";
 
 export async function like(values) {
   try {

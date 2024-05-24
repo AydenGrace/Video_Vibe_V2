@@ -5,7 +5,7 @@ const cors = require("cors");
 const port = process.env.PORT || 4000;
 const userRoutes = require("./routes/users");
 const videosRoutes = require("./routes/videos");
-const allowedOrigin = "https://video-vibe-v2-front.vercel.app/";
+const allowedOrigin = "https://video-vibe-v2-front.vercel.app";
 
 const app = express();
 app.use(express.json());

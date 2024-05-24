@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./VideoCard.module.scss";
-import ReactPlayer from "react-player";
+import ReactPlayer from "react-player/youtube";
 import { searchById, updateUser } from "../../apis/users";
 import { UserContext } from "../../context/UserContext";
 import { dislike, like, unDislike, unLike } from "../../apis/videos";

@@ -1,0 +1,78 @@
+@use "../../assets/styles/mixins" as mixin;
+
+.element {
+  color: black;
+  position: relative;
+  margin-bottom: 20px;
+  padding: 0;
+  max-width: 400px;
+  background-color: transparent;
+  color: white;
+  // @include mixin.md-lt {
+  //   max-width: 100%;
+  // }
+}
+
+.player_wrapper {
+  width: auto; // Reset width
+  height: auto; // Reset height
+}
+.react_player {
+  position: relative; // Set to relative
+}
+
+.react_player > div {
+  position: absolute; // Scaling will occur since parent is relative now
+}
+
+.title_section {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  h2 {
+    width: 100%;
+    font-size: 1rem;
+    margin: 0;
+    // color: var(--gray-1);
+  }
+}
+
+.like_section {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+  // position: absolute;
+  // right: 10px;
+  // top: 10px;
+  align-items: center;
+  gap: 5px;
+  // z-index: 2;
+  p {
+    margin: 0;
+  }
+  i {
+    cursor: pointer;
+  }
+}
+
+.creator_section {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  p {
+    font-size: 0.8rem;
+    color: var(--gray-2);
+  }
+}
+
+.avatar {
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  border-radius: 500px;
+  margin-right: 5px;
+}
